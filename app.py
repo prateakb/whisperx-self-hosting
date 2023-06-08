@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 device = "cpu"
 compute_type = "float32"  # change to "int8" if low on GPU mem (may reduce accuracy)
-YOUR_HF_TOKEN=os.getenV("HUGGING_FACE_TOKEN", "nothing")
+YOUR_HF_TOKEN=os.getenv("HUGGING_FACE_TOKEN", "nothing")
 # Load the models and initialize them outside the request handling function
 diarize_model = whisperx.DiarizationPipeline(use_auth_token=YOUR_HF_TOKEN, device=device)
 
