@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisperx-transcription-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whisperx-transcription-app
+  template:
+    metadata:
+      labels:
+        app: whisperx-transcription-app
+    spec:
+      containers:
+        - name: whisperx-transcription-container
+          image: <will post a public docker image soon>
+          ports:
+            - containerPort: 5000
+          resources:
+            limits:
+              cpu: "2"
+              memory: "8Gi"
+            requests:
+              cpu: "2"
+              memory: "4Gi"
